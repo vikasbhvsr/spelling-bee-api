@@ -61,27 +61,3 @@ mongoose.connection.on('error', (err) => {
 mongoose.connection.once('open', () => {
   console.log('Connected to the DB');
 });
-
-// Import all the models
-// require('./models/Champion');
-
-// Connect to DB
-// MongoClient.connect(
-//   `mongodb+srv://vikasbhvsr:QrH7uiONe0mp521y@vikascluster-ck21o.mongodb.net/sb_spelling_bee?retryWrites=true&w=majority`,
-//   { useUnifiedTopology: true },
-//   function (err, client) {
-//     if (err) throw err;
-//     const db = client.db(process.env.DB_NAME);
-//     db.collection('sb_champions')
-//       .find()
-//       .toArray(function (err, results) {
-//         if (err) throw err;
-
-//         results.forEach((result) => {
-//           console.log(result.winner_data.name, result.winner_data.win_age);
-//         });
-
-//         client.close();
-//       });
-//   }
-// );
