@@ -3,10 +3,18 @@ const router = express.Router();
 const Champion = require('../models/Champion');
 
 // Get All Champions
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
   try {
     const champions = await Champion.find();
-    res.send(champions);
+    const token = req.headers['x-spelling-bee'];
+    if (token == process.env.AUTHORIZATION_TOKEN) {
+      return res.send(champions);
+    } else {
+      res
+        .status(400)
+        .json({ message: `Knock knock! You ain't said the screen key.` });
+    }
+    // res.send(champions);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
