@@ -10,9 +10,7 @@ router.get('/', async (req, res, next) => {
     if (token == process.env.AUTHORIZATION_TOKEN) {
       return res.send(champions);
     } else {
-      res
-        .status(400)
-        .json({ message: `Knock knock! You ain't said the screen key.` });
+      res.status(400).json({ message: `Getchu secret key first.` });
     }
     // res.send(champions);
   } catch (err) {
